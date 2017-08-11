@@ -18,10 +18,10 @@ connection.on('error', (err) => {
 
 app.use(bodyParser.json());
 app.get('/', (req,res) => {
-  res.send('Hello world!')
+  res.send('Cashout!')
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log("Cashout is on port " + PORT);
 })
