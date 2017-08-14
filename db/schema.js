@@ -1,24 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Use native promises
+/* Use native promises */
 mongoose.Promise = global.Promise;
 
+/*
 const TimeStampSchema = new Schema ({
   created_at: Date,
   updated_at: Date
 });
-
-TimeStampSchema.pre('save', function(next){
-  now = new Date();
-  this.updated_at = now;
-  if ( !this.created_at ) {
-    this.created_at = now;
-  }
-  next();
-});
-
+*/
 const CashOutFormSchema = new Schema({
+  name:                         String,
   charge_sales_plus_tips:       Number,
   charge_tips:                  Number,
   charge_sales_less_tips:       Number,
@@ -31,7 +24,8 @@ const CashOutFormSchema = new Schema({
   total_cash_amount_difference: Number,
   total_gratuity_min_8_precent: Number,
   digital_signature:            String,
-  time_stamp: [TimeStampSchema]
+  created_at: Date,
+  updated_at: Date
 });
 
 const UserSchema = new Schema({
@@ -39,18 +33,38 @@ const UserSchema = new Schema({
   pass_code: { type: Number, required: true, unique: true },
   admin: false,
   cash_out_forms: [CashOutFormSchema],
-  time_stamp: [TimeStampSchema]
+  created_at: Date,
+  updated_at: Date
 });
 
 const CashOutListSchema = new Schema({
-  user_name: String
+  name: String
 });
 
-//const UserList = new Schema ({
-//  
-//});
+CashOutFormSchema.pre('save', function(next){
+  now = new Date();
+  this.updated_at = now;
+  if ( !this.created_at ) {
+    this.created_at = now;
+  }
+  next();
+});
 
-const TimeStampModel = mongoose.model('TimeStamp', TimeStampSchema);
+UserSchema.pre('save', function(next){
+  now = new Date();
+  this.updated_at = now;
+  if ( !this.created_at ) {
+    this.created_at = now;
+  }
+  next();
+});
+
+/*
+const UserList = new Schema ({
+  
+});
+*/
+/* const TimeStampModel = mongoose.model('TimeStamp', TimeStampSchema); */
 const CashOutFormModel = mongoose.model('CashOut', CashOutFormSchema);
 const UserModel = mongoose.model('User', UserSchema);
 const CashOutListModel = mongoose.model('CashOutList', CashOutListSchema);

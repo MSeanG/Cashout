@@ -8,13 +8,12 @@ const CashOutForm = require('../models/cash-out-form');
 const User = require('../models/user');
 const CashOutList = require('../models/cash-out-list');
 
-// Use native promises
+/* Use native promises */
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
 
-// Remove seeds
-
+/* Remove seeds */
 TimeStamp.remove({}, function(error){
   console.log(error);
 });
@@ -31,7 +30,7 @@ CashOutList.remove({}, function(error){
   console.log(error);
 });
 
-//Seeded cash out form data
+/* Seeded cash out form data */
 const CashOutFormOne = new CashOutForm({
   charge_sales_plus_tips:       120.00,
   charge_tips:                  20.00,
@@ -45,7 +44,8 @@ const CashOutFormOne = new CashOutForm({
   total_cash_amount_difference: '',
   total_gratuity_min_8_precent: 42.00,
   digital_signature:            'Gilly',
-  time_stamp: '2017-08-11T20:40:10:301Z'
+  created_at: '2017-08-11T20:40:10:301Z',
+  updated_at: '2017-08-11T20:40:10:301Z'
 });
 
 const CashOutFormTwo = new CashOutForm({
@@ -61,7 +61,8 @@ const CashOutFormTwo = new CashOutForm({
   total_cash_amount_difference: '',
   total_gratuity_min_8_precent: 42.00,
   digital_signature:            'Gilly',
-  time_stamp: '2017-08-12T20:40:10:301Z'
+  created_at: '2017-08-12T20:40:10:301Z',
+  updated_at: '2017-08-12T20:40:10:301Z'
 });
 
 const CashOutFormThree = new CashOutForm({
@@ -77,38 +78,41 @@ const CashOutFormThree = new CashOutForm({
   total_cash_amount_difference: '',
   total_gratuity_min_8_precent: 42.00,
   digital_signature:            'Sean',
-  time_stamp: '2017-08-13T20:40:10:301Z'
+  created_at: '2017-08-13T20:40:10:301Z',
+  updated_at: '2017-08-13T20:40:10:301Z'
 });
 
 
-//Seeded user data
+/* Seeded user data */
 
 const Gilly = new User({
   user_name: 'Gilly',
   pass_code: '1234',
   admin: true,
-  cash_out_forms: [CashOutFormOne,CashOutFormTwo],
-  time_stamp: ''
-});
-
-const Brian = new User ({
-  user_name: 'Brian',
-  pass_code: '4321',
-  admin: false,
   cash_out_forms: [],
-  time_stamp: ''
+  created_at: '2016-07-23T20:40:10:101Z',
+  updated_at: '2016-07-23T20:40:10:101Z'
 });
 
 const Sean = new User ({
   user_name: 'Sean',
   pass_code: '0019',
   admin: false,
-  cash_out_forms: [CashOutFormThree],
-  time_stamp: ''
+  cash_out_forms: [CashOutFormOne,CashOutFormTwo],
+  created_at: '2016-08-20T20:40:10:201Z',
+  updated_at: '2016-08-20T20:40:10:201Z'
 });
 
+const Brian = new User ({
+  user_name: 'Brian',
+  pass_code: '4321',
+  admin: false,
+  cash_out_forms: [CashOutFormThree],
+  created_at: '2016-09-26T20:40:10:301Z',
+  updated_at: '2016-09-26T20:40:10:301Z'
+});
 
-// Save seeds
+/* Save seeds */
 
 Gilly.save( (error)=>{
   if (error) console.log('Gilly user' + error);
@@ -125,7 +129,7 @@ Sean.save( (error)=>{
   console.log('Sean created');
 });
 
-// CONNECTION EVENTS
+/* CONNECTION EVENTS */
 db.once('open', function() {
   console.log("Opened mongoose.");
 });
