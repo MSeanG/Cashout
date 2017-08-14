@@ -14,10 +14,11 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
 /* Remove seeds */
+/*
 TimeStamp.remove({}, function(error){
   console.log(error);
 });
-
+*/
 CashOutForm.remove({}, function(error){
   console.log(error);
 });
@@ -43,9 +44,9 @@ const CashOutFormOne = new CashOutForm({
   total_actual_cash_on_hand:    380.00,
   total_cash_amount_difference: '',
   total_gratuity_min_8_precent: 42.00,
-  digital_signature:            'Gilly',
-  created_at: '2017-08-11T20:40:10:301Z',
-  updated_at: '2017-08-11T20:40:10:301Z'
+  digital_signature:            'Sean',
+  created_at: ''/*'2017-08-11T20:40:10:301Z'*/,
+  updated_at: ''/*'2017-08-11T20:40:10:301Z'*/
 });
 
 const CashOutFormTwo = new CashOutForm({
@@ -60,9 +61,9 @@ const CashOutFormTwo = new CashOutForm({
   total_actual_cash_on_hand:    380.00,
   total_cash_amount_difference: '',
   total_gratuity_min_8_precent: 42.00,
-  digital_signature:            'Gilly',
-  created_at: '2017-08-12T20:40:10:301Z',
-  updated_at: '2017-08-12T20:40:10:301Z'
+  digital_signature:            'Sean',
+  created_at: ''/*'2017-08-12T20:40:10:301Z'*/,
+  updated_at: ''/*'2017-08-12T20:40:10:301Z'*/
 });
 
 const CashOutFormThree = new CashOutForm({
@@ -77,9 +78,9 @@ const CashOutFormThree = new CashOutForm({
   total_actual_cash_on_hand:    380.00,
   total_cash_amount_difference: '',
   total_gratuity_min_8_precent: 42.00,
-  digital_signature:            'Sean',
-  created_at: '2017-08-13T20:40:10:301Z',
-  updated_at: '2017-08-13T20:40:10:301Z'
+  digital_signature:            'Brian',
+  created_at: ''/*'2017-08-13T20:40:10:301Z'*/,
+  updated_at: ''/*'2017-08-13T20:40:10:301Z'*/
 });
 
 
@@ -90,8 +91,8 @@ const Gilly = new User({
   pass_code: '1234',
   admin: true,
   cash_out_forms: [],
-  created_at: '2016-07-23T20:40:10:101Z',
-  updated_at: '2016-07-23T20:40:10:101Z'
+  created_at: ''/*'2016-07-23T20:40:10:101Z'*/,
+  updated_at: ''/*'2016-07-23T20:40:10:101Z'*/
 });
 
 const Sean = new User ({
@@ -99,8 +100,8 @@ const Sean = new User ({
   pass_code: '0019',
   admin: false,
   cash_out_forms: [CashOutFormOne,CashOutFormTwo],
-  created_at: '2016-08-20T20:40:10:201Z',
-  updated_at: '2016-08-20T20:40:10:201Z'
+  created_at: ''/*'2016-08-20T20:40:10:201Z'*/,
+  updated_at: ''/*'2016-08-20T20:40:10:201Z'*/
 });
 
 const Brian = new User ({
@@ -108,8 +109,8 @@ const Brian = new User ({
   pass_code: '4321',
   admin: false,
   cash_out_forms: [CashOutFormThree],
-  created_at: '2016-09-26T20:40:10:301Z',
-  updated_at: '2016-09-26T20:40:10:301Z'
+  created_at: ''/*'2016-09-26T20:40:10:301Z'*/,
+  updated_at: ''/*'2016-09-26T20:40:10:301Z'*/
 });
 
 /* Save seeds */

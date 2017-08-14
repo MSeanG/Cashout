@@ -31,7 +31,7 @@ const CashOutFormSchema = new Schema({
 const UserSchema = new Schema({
   user_name: String,
   pass_code: { type: Number, required: true, unique: true },
-  admin: false,
+  admin: Boolean,
   cash_out_forms: [CashOutFormSchema],
   created_at: Date,
   updated_at: Date
@@ -70,7 +70,7 @@ const UserModel = mongoose.model('User', UserSchema);
 const CashOutListModel = mongoose.model('CashOutList', CashOutListSchema);
 
 module.exports = {
-  TimeStamp: TimeStampModel,
+  /* TimeStamp: TimeStampModel, */
   CashOutForm: CashOutFormModel,
   User: UserModel,
   CashOutList: CashOutListModel
