@@ -46,6 +46,10 @@ const CashOutListSchema = new Schema({
   user_name: String
 });
 
+//const UserList = new Schema ({
+//  
+//});
+
 const TimeStampModel = mongoose.model('TimeStamp', TimeStampSchema);
 const CashOutFormModel = mongoose.model('CashOut', CashOutFormSchema);
 const UserModel = mongoose.model('User', UserSchema);
