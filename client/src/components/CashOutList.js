@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+class CashOutList extends Component {
   render() {
     return (
       <div>
-        Hello from Home
+        Hello from CashOutList
       </div>
     );
   }
 }
 
-export default Home;
+export default CashOutList;
