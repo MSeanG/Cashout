@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 
 const TimeStampSchema = new Schema ({
   created_at: Date,
-  updated_at: Date,
+  updated_at: Date
 });
 
 TimeStampSchema.pre('save', function(next){
@@ -31,20 +31,19 @@ const CashOutFormSchema = new Schema({
   total_cash_amount_difference: Number,
   total_gratuity_min_8_precent: Number,
   digital_signature:            String,
-  time_stamp: [TimeStampSchema],
+  time_stamp: [TimeStampSchema]
 });
 
 const UserSchema = new Schema({
   user_name: String,
   pass_code: { type: Number, required: true, unique: true },
   admin: false,
-  cashOutforms: [CashOutFormSchema],
+  cash_out_forms: [CashOutFormSchema],
   time_stamp: [TimeStampSchema]
 });
 
 const CashOutListSchema = new Schema({
-  user_name: [UserSchema.user_name],
-  title: [CashoutFormSchema.time_stamp]
+  user_name: String
 });
 
 const TimeStampModel = mongoose.model('TimeStamp', TimeStampSchema);

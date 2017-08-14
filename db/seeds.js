@@ -3,10 +3,10 @@ require("dotenv").config();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
-const TimeStamp = require('../models/');
-const CashOutForm = require('../models/');
-const User = require('../models/');
-const CashOutList = require('../models/');
+const TimeStamp = require('../models/time-stamp');
+const CashOutForm = require('../models/cash-out-form');
+const User = require('../models/user');
+const CashOutList = require('../models/cash-out-list');
 
 // Use native promises
 mongoose.Promise = global.Promise;
@@ -31,14 +31,64 @@ CashOutList.remove({}, function(error){
   console.log(error);
 });
 
-//Seeded data
+//Seeded cash out form data
+const CashOutFormOne = new CashOutForm({
+  charge_sales_plus_tips:       120.00,
+  charge_tips:                  20.00,
+  charge_sales_less_tips:       '',
+  total_sales:                  500.00,
+  total_charge_sales_plus_tips: '',
+  total_pay_outs:               0,
+  total_charges_plus_pay_outs:  '',
+  total_projected_cash_on_hand: '',
+  total_actual_cash_on_hand:    380.00,
+  total_cash_amount_difference: '',
+  total_gratuity_min_8_precent: 42.00,
+  digital_signature:            'Gilly',
+  time_stamp: '2017-08-11T20:40:10:301Z'
+});
+
+const CashOutFormTwo = new CashOutForm({
+  charge_sales_plus_tips:       120.00,
+  charge_tips:                  20.00,
+  charge_sales_less_tips:       '',
+  total_sales:                  500.00,
+  total_charge_sales_plus_tips: '',
+  total_pay_outs:               0,
+  total_charges_plus_pay_outs:  '',
+  total_projected_cash_on_hand: '',
+  total_actual_cash_on_hand:    380.00,
+  total_cash_amount_difference: '',
+  total_gratuity_min_8_precent: 42.00,
+  digital_signature:            'Gilly',
+  time_stamp: '2017-08-12T20:40:10:301Z'
+});
+
+const CashOutFormThree = new CashOutForm({
+  charge_sales_plus_tips:       120.00,
+  charge_tips:                  20.00,
+  charge_sales_less_tips:       '',
+  total_sales:                  500.00,
+  total_charge_sales_plus_tips: '',
+  total_pay_outs:               0,
+  total_charges_plus_pay_outs:  '',
+  total_projected_cash_on_hand: '',
+  total_actual_cash_on_hand:    380.00,
+  total_cash_amount_difference: '',
+  total_gratuity_min_8_precent: 42.00,
+  digital_signature:            'Sean',
+  time_stamp: '2017-08-13T20:40:10:301Z'
+});
+
+
+//Seeded user data
 
 const Gilly = new User({
   user_name: 'Gilly',
   pass_code: '1234',
   admin: true,
-  cash_out_forms: ['00000','00001'],
-  time_stamp: '10011'
+  cash_out_forms: [CashOutFormOne,CashOutFormTwo],
+  time_stamp: ''
 });
 
 const Brian = new User ({
@@ -46,15 +96,17 @@ const Brian = new User ({
   pass_code: '4321',
   admin: false,
   cash_out_forms: [],
-  time_stamp: '11010'
+  time_stamp: ''
 });
 
 const Sean = new User ({
   user_name: 'Sean',
   pass_code: '0019',
   admin: false,
-  cash_out_forms: ['00002']
+  cash_out_forms: [CashOutFormThree],
+  time_stamp: ''
 });
+
 
 // Save seeds
 
