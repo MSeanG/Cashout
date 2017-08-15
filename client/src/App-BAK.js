@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import logo from './logo.svg';
 import './layout.css';
 import './colors.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -19,18 +19,19 @@ class App extends Component {
           <div id="herald"><h2>Shift End Cash Out</h2></div>
           <div id="format">
             <div id="binder">
+              
               <div>
                 <ul>
                   <li><Link to="/">Home</Link></li>
-                  <li><Link to="/user-list">User List</Link></li>
-                  <li><Link to="/add-user">Add User</Link></li>
+                  {/* <li><Link to="/user-list">User List</Link></li> */}
+                  {/* <li><Link to="/add-user">Add User</Link></li> */}
                 </ul>
               </div> 
               <div>
                 <Route exact path="/" component={Home} />
-                <Route path="/user-list" component={UserList}/>
-                <Route path="/add-user" component={AddUser}/>
-                <Route path="/user/:userId" component={User} />
+                {/* <Route path="/user-list" component={UserList}/> */}
+                {/* <Route path="/add-user" component={AddUser}/> */}
+                {/* <Route path="/user/:userId" component={User} /> */}
               </div>
             </div>
           </div>
