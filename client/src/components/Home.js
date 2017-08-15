@@ -22,7 +22,18 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h1>Home</h1>
+        <div>
+          <h1>What is your username?</h1>
+          <input type="text" name="user_name" />
+          <button>New User</button>
+        </div>
+        {this.state.users.map((user, i) => (
+          <div key={i}>
+            <Link to={`/user/${user._id}`}>
+              {user.user}'s Stuff
+            </Link>
+          </div>
+        ))}
       </div>
     );
   }
