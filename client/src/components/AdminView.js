@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import User from './User';
 import axios from 'axios';
 
@@ -19,7 +19,7 @@ class AdminView extends Component {
 
   render() {
     return (
-
+      <Router>
       <div className="center">
         <h2>Admin View</h2>
         <ul className="users-list">
@@ -35,7 +35,7 @@ class AdminView extends Component {
           <Route path="/users/:userId" component={User} />
         </div>
       </div>
-
+      </Router>
     );
   }
 }

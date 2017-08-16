@@ -4,18 +4,6 @@ import React, { Component } from 'react';
 
 class Home extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      showAdminView: false
-    }
-  }
-
-  _toggleAdminView = () => {
-    const showAdminView = !this.state.showAdminView;
-    this.setState({showAdminView});
-  };
-
   render() {
     return (
       <div className="center">
