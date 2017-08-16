@@ -20,15 +20,11 @@ connection.on('error', (err) => {
 }); 
 
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/client/build/'));
 app.use('/api/users', UsersController);
 app.use('/api/user-list', UserListController);
-//app.get('/', (req,res) => {
-//  res.send('Cashout!')
-//})
 app.get('/', (req,res) => {
-    res.sendFile(__dirname + '/client/build/index.html')
-  })
+  res.send('Cashout!')
+})
 
 
 
