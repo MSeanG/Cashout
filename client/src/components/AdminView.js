@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import User from './User';
 import axios from 'axios';
+
+import NewUserForm from './NewUserForm';
+//import UserList from './UserList';
 
 class AdminView extends Component {
   constructor(){
@@ -19,10 +21,15 @@ class AdminView extends Component {
 
   render() {
     return (
-      <Router>
       <div className="center">
-        <h2>Admin View</h2>
-        <ul className="users-list">
+
+        <h1>Admin View</h1>
+        <NewUserForm
+              // addNewProductToProductList={this.props.addNewProductToProductList}/>
+              addNewUserToUserList={this.props.addNewUserToUserList}/>
+
+        <h3>User List</h3>
+        <ul className="normal-list">
           {this.state.users.map((user, i) => {
             return (
               <li key={i}>
@@ -31,11 +38,8 @@ class AdminView extends Component {
             );
           })}
         </ul>
-        <div>
-          <Route path="/users/:userId" component={User} />
-        </div>
+
       </div>
-      </Router>
     );
   }
 }

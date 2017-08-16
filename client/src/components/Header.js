@@ -9,7 +9,7 @@ class Header extends Component {
       <Router>
         <div>
           <div id="header">
-            <div id="left"><Link to="/home">HOME</Link></div>
+            <div id="left"><button><Link to="/home">HOME</Link></button></div>
             <div id="center"><h1>Shift End Cash Out</h1></div>
             <div id="right"><Link to="/login">LOGIN</Link></div>
           </div>
