@@ -3,10 +3,11 @@ require("dotenv").config();
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 
-const TimeStamp = require('../models/time-stamp');
+/* const TimeStamp = require('../models/time-stamp'); */
 const CashOutForm = require('../models/cash-out-form');
 const User = require('../models/user');
 const CashOutList = require('../models/cash-out-list');
+const UserList = require('../models/user-list');
 
 /* Use native promises */
 mongoose.Promise = global.Promise;
@@ -28,6 +29,10 @@ User.remove({}, function(error){
 });
 
 CashOutList.remove({}, function(error){
+  console.log(error);
+});
+
+UserList.remove({}, function(error){
   console.log(error);
 });
 
@@ -86,19 +91,11 @@ const CashOutFormThree = new CashOutForm({
 
 /* Seeded user data */
 
-const Gilly = new User({
-  user_name: 'Gilly',
-  pass_code: '1234',
-  admin: true,
-  cash_out_forms: [],
-  created_at: ''/*'2016-07-23T20:40:10:101Z'*/,
-  updated_at: ''/*'2016-07-23T20:40:10:101Z'*/
-});
-
 const Sean = new User ({
   user_name: 'Sean',
   pass_code: '0019',
   admin: false,
+  user_list: [],
   cash_out_forms: [CashOutFormOne,CashOutFormTwo],
   created_at: ''/*'2016-08-20T20:40:10:201Z'*/,
   updated_at: ''/*'2016-08-20T20:40:10:201Z'*/
@@ -108,26 +105,67 @@ const Brian = new User ({
   user_name: 'Brian',
   pass_code: '4321',
   admin: false,
+  user_list: [],
   cash_out_forms: [CashOutFormThree],
   created_at: ''/*'2016-09-26T20:40:10:301Z'*/,
   updated_at: ''/*'2016-09-26T20:40:10:301Z'*/
 });
 
+/* Seeded user list */
+ const StartingUserList = new UserList ({
+  name: 'Starting User List',
+  user_list: [Brian,Sean]
+ });
+
+const Gilly = new User({
+  user_name: 'Gilly',
+  pass_code: '1234',
+  admin: true,
+  user_list: [StartingUserList],
+  cash_out_forms: [],
+  created_at: ''/*'2016-07-23T20:40:10:101Z'*/,
+  updated_at: ''/*'2016-07-23T20:40:10:101Z'*/
+});
+
+
+
 /* Save seeds */
 
-Gilly.save( (error)=>{
-  if (error) console.log('Gilly user' + error);
-  console.log('Gilly created');
+CashOutFormOne.save( (error)=>{
+  if (error) console.log('Cash Out Form One user' + error);
+  console.log('Cash Out Form One added');
 });
+
+CashOutFormTwo.save( (error)=>{
+  if (error) console.log('Cash Out Form Two user' + error);
+  console.log('Cash Out Form Two added');
+});
+
+CashOutFormThree.save( (error)=>{
+  if (error) console.log('Cash Out Form Three user' + error);
+  console.log('Cash Out Form Three added');
+});
+
+
 
 Brian.save( (error)=>{
   if (error) console.log('Brian user' + error);
-  console.log('Brian created');
+  console.log('Brian added');
 });
 
 Sean.save( (error)=>{
   if (error) console.log('Sean user' + error);
-  console.log('Sean created');
+  console.log('Sean added');
+});
+
+StartingUserList.save( (error)=>{
+  if (error) console.log('Starting User List' + error);
+  console.log('Starting User List added');
+});
+
+Gilly.save( (error)=>{
+  if (error) console.log('Gilly user' + error);
+  console.log('Gilly added');
 });
 
 /* CONNECTION EVENTS */

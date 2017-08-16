@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class AddUser extends Component {
+class UserView extends Component {
   render() {
     return (
       <div>
-        Hello from AddUser
+        User View
       </div>
     );
   }
 }
 
-export default AddUser;
+export default UserView;

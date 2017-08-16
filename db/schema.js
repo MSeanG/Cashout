@@ -33,12 +33,13 @@ const UserSchema = new Schema({
   pass_code: { type: Number, required: true, unique: true },
   admin: Boolean,
   cash_out_forms: [CashOutFormSchema],
+  user_list: [],
   created_at: Date,
   updated_at: Date
 });
 
 const CashOutListSchema = new Schema({
-  name: String
+  name: Date
 });
 
 CashOutFormSchema.pre('save', function(next){
@@ -59,19 +60,22 @@ UserSchema.pre('save', function(next){
   next();
 });
 
-/*
-const UserList = new Schema ({
-  
+const UserListSchema = new Schema ({
+  name: String,
+  user_names: [UserSchema]
 });
-*/
+
+
 /* const TimeStampModel = mongoose.model('TimeStamp', TimeStampSchema); */
 const CashOutFormModel = mongoose.model('CashOut', CashOutFormSchema);
 const UserModel = mongoose.model('User', UserSchema);
 const CashOutListModel = mongoose.model('CashOutList', CashOutListSchema);
+const UserListModel = mongoose.model('UserList', UserListSchema);
 
 module.exports = {
   /* TimeStamp: TimeStampModel, */
   CashOutForm: CashOutFormModel,
   User: UserModel,
-  CashOutList: CashOutListModel
+  CashOutList: CashOutListModel,
+  UserList: UserListModel
 };

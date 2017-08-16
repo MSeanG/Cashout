@@ -1,5 +1,6 @@
 body{
-  background:#f1f1f1;
+  background:#fff;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 #binder, #verify{
   background: #fff;
@@ -10,4 +11,7 @@ body{
 #header{
   background: #333;
   color: #ddd;
+}
+#header a{
+  color: #fff;
 }

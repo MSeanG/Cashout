@@ -8,12 +8,14 @@ router.get("/", (req,res) => {
   })
 });
 
-router.get("/:id", (req,res) => {
-  User.findById(req.params.id).then((users) => {
-    res.json(users);
-  });
-});
+//router.get("/:id", (req,res) => {
+//  User.findById(req.params.id).then((users) => {
+//    res.json(users);
+//  });
+//});
 
+
+/*
 router.post("/login", (req, res) => {
   const user_name = req.body.user_name;
   const pass_code = req.body.pass_code;
@@ -26,5 +28,5 @@ router.post("/login", (req, res) => {
     res.json(userToSearch)
   })
 });
-
+*/
 module.exports = router;
