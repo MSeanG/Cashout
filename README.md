@@ -13,10 +13,10 @@ Cash Out Report is a Single Page Application to be used at the end of a server's
 
 This application uses:
 
-Mongo
-Express
-React
-Node
+- Mongo
+- Express
+- React
+- Node
 
 
 ### Wireframe and ERD images
